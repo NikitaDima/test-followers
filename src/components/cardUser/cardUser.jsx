@@ -58,12 +58,14 @@ export default CardUser;
 
 CardUser.propTypes = {
   onClick: PropTypes.func.isRequired,
-  users: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    avatar: PropTypes.string.isRequired,
-    user: PropTypes.string.isRequired,
-    tweets: PropTypes.number.isRequired,
-    followers: PropTypes.number.isRequired,
-    isFollowing: PropTypes.bool.isRequired,
-  }),
+  users: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      avatar: PropTypes.string.isRequired,
+      user: PropTypes.string.isRequired,
+      tweets: PropTypes.number.isRequired,
+      followers: PropTypes.number.isRequired,
+      isFollowing: PropTypes.bool.isRequired,
+    })
+  ).isRequired,
 };
