@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import css from './cardUser.module.css';
 import picture21 from '../../images/picture21.png';
 
-const CardUser = ({ users, onClick, isFollowing }) => {
+const CardUser = ({ users, onClick }) => {
   const [activeButtonId, setActiveButtonId] = useState(null);
 
   const handleButtonClick = (e, user) => {
@@ -39,8 +39,8 @@ const CardUser = ({ users, onClick, isFollowing }) => {
           <div className={css.ButtonWrapper}>
             <button
               className={classnames(css.Btn, {
-                [css.BtnActive]: activeButtonId === user.id && isFollowing,
-                [css.BtnInactive]: activeButtonId !== user.id || !isFollowing,
+                [css.BtnActive]: user.isFollowing,
+                [css.BtnInactive]: !user.isFollowing,
               })}
               onClick={e => handleButtonClick(e, user)}
             >

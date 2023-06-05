@@ -1,7 +1,12 @@
+import css from './btnLoadMore.module.css';
+
 const BtnLoadMore = ({ onClick }) => {
   return (
-    <div>
-      <button onClick={onClick}> Load more</button>
+    <div className={css.BtnWrapper}>
+      <button className={css.Btn} onClick={onClick}>
+        {' '}
+        Load more
+      </button>
     </div>
   );
 };

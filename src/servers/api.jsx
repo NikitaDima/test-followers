@@ -16,6 +16,7 @@ export const fetchUsers = async page => {
 export const fetchUpdatedFollowers = async (user, updatedFollowers) => {
   const data = {
     followers: updatedFollowers,
+    isFollowing: !user.isFollowing,
   };
 
   const response = await axios.put(`/users/${user.id}`, data);

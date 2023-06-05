@@ -8,7 +8,7 @@ export const App = () => {
   const [page, setPage] = useState(1);
   const [users, setUsers] = useState([]);
   const [flagNextPage, setFlagNextPage] = useState(true);
-  const [isFollowing, setIsFollowing] = useState(false);
+  // const [isFollowing, setIsFollowing] = useState(false);
   const prevUsersRef = useRef([]);
 
   useEffect(() => {
@@ -37,17 +37,20 @@ export const App = () => {
       });
   }, [flagNextPage, page]);
 
-  const handlBtnClick = (_, user) => {
-    setIsFollowing(prevIsFollowing => !prevIsFollowing);
-    const updatedFollowers = isFollowing
-      ? user.followers + 1
-      : user.followers - 1;
+  const handleBtnClick = (_, user) => {
+    const updatedFollowers = user.isFollowing
+      ? user.followers - 1
+      : user.followers + 1;
 
     fetchUpdatedFollowers(user, updatedFollowers)
       .then(() => {
         const updatedUsers = users.map(prevUser =>
           prevUser.id === user.id
-            ? { ...prevUser, followers: updatedFollowers }
+            ? {
+                ...prevUser,
+                followers: updatedFollowers,
+                isFollowing: !prevUser.isFollowing,
+              }
             : prevUser
         );
         setUsers(updatedUsers);
@@ -65,11 +68,7 @@ export const App = () => {
 
   return (
     <div>
-      <CardUser
-        users={users}
-        isFollowing={isFollowing}
-        onClick={handlBtnClick}
-      />
+      <CardUser users={users} onClick={handleBtnClick} />
       {flagNextPage && <BtnLoadMore onClick={handleNextPage} />}
     </div>
   );
