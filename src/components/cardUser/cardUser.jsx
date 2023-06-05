@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ReactComponent as LogoSvg } from '../../images/Logo.svg';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import css from './cardUser.module.css';
 import picture21 from '../../images/picture21.png';
@@ -54,3 +55,15 @@ const CardUser = ({ users, onClick }) => {
 };
 
 export default CardUser;
+
+CardUser.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  users: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired,
+    user: PropTypes.string.isRequired,
+    tweets: PropTypes.number.isRequired,
+    followers: PropTypes.number.isRequired,
+    isFollowing: PropTypes.bool.isRequired,
+  }),
+};

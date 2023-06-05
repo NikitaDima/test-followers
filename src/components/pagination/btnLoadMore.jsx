@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import css from './btnLoadMore.module.css';
 
 const BtnLoadMore = ({ onClick }) => {
@@ -12,3 +14,7 @@ const BtnLoadMore = ({ onClick }) => {
 };
 
 export default BtnLoadMore;
+
+BtnLoadMore.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};

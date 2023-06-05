@@ -8,7 +8,7 @@ export const App = () => {
   const [page, setPage] = useState(1);
   const [users, setUsers] = useState([]);
   const [flagNextPage, setFlagNextPage] = useState(true);
-  // const [isFollowing, setIsFollowing] = useState(false);
+
   const prevUsersRef = useRef([]);
 
   useEffect(() => {
